@@ -8,15 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var tapCount = 0
+    let students = ["harry","ron", "hermione"]
+    @State private var selectedStudent = "harry"
     
     var body: some View {
-        Button("Tap count: \(tapCount)") {
-            tapCount += 1
+        NavigationView {
+            
+            Form {
+                Picker("select your student", selection: $selectedStudent) {
+                    ForEach(students, id: \.self) {
+                        Text($0)
+                    }
+                }
+                }
+            }
         }
-        
+
     }
-}
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
